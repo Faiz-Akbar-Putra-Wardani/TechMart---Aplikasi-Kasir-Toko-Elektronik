@@ -1,3 +1,6 @@
+// app/modules/product/views/product_update_view.dart
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +28,8 @@ class ProductUpdateView extends GetView<ProductController> {
         ),
       ),
       body: FutureBuilder<DocumentSnapshot<Object?>>(
-        future: controller.getData(Get.arguments), // Fetch data based on arguments
+        future:
+            controller.getData(Get.arguments), // Fetch data based on arguments
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -85,8 +89,8 @@ class ProductUpdateView extends GetView<ProductController> {
                           onPressed: () => controller.Update(
                             // Pass the ID or reference for update
                             controller.cNama.text,
-                            controller.cPrice.text,
-                            controller.cStok.text,
+                            int.parse(controller.cPrice.text),
+                            int.parse(controller.cStok.text),
                             Get.arguments,
                           ),
                           child: Row(
