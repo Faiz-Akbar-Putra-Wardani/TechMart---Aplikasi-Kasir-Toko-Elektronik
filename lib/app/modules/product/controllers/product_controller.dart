@@ -60,7 +60,7 @@ class ProductController extends GetxController {
     return docRef.get();
   }
 
-  void Update(String nama, int price, int stok, String id) async {
+  void Update(String nama, String price, String stok, String id) async {
     DocumentReference produkById = firestore.collection("produk").doc(id);
 
     try {

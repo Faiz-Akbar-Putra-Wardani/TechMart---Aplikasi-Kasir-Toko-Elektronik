@@ -1,3 +1,4 @@
+// app/modules/employee/controllers/employee_controller.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,6 @@ class EmployeeController extends GetxController {
     }
   }
 
-
   @override
   void onInit() {
     // TODO: implement onInit
@@ -127,5 +127,4 @@ class EmployeeController extends GetxController {
     cNomor.dispose();
     super.onClose();
   }
-
 }

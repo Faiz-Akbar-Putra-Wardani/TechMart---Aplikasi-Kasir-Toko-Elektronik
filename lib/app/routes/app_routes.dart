@@ -10,6 +10,7 @@ abstract class Routes {
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const PRODUCT = _Paths.PRODUCT;
   static const EMPLOYEE = _Paths.EMPLOYEE;
+  static const CUSTOMER = _Paths.CUSTOMER;
 }
 
 abstract class _Paths {
@@ -20,4 +21,5 @@ abstract class _Paths {
   static const RESET_PASSWORD = '/reset-password';
   static const PRODUCT = '/product';
   static const EMPLOYEE = '/employee';
+  static const CUSTOMER = '/customer';
 }

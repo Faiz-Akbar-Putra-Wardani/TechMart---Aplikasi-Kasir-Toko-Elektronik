@@ -1,16 +1,16 @@
-// app/modules/employee/views/employee_view.dart
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// app/modules/customer/views/customer_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project_mobile/app/modules/employee/views/employee_add_view.dart';
-import 'package:project_mobile/app/modules/employee/views/employee_update_view.dart';
-import 'package:project_mobile/app/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 
-import '../controllers/employee_controller.dart';
+import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/customer/views/customer_add_view.dart';
+import 'package:project_mobile/app/modules/customer/views/customer_update_view.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
 
-class EmployeeView extends StatelessWidget {
-  final EmployeeController controller = Get.put(EmployeeController());
+import '../controllers/customer_controller.dart';
 
+class CustomerView extends GetView<CustomerController> {
+  const CustomerView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +22,13 @@ class EmployeeView extends StatelessWidget {
               .spaceBetween, // Agar icon dan teks berada di sisi yang berlawanan
           children: [
             IconButton(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
               onPressed: () {
-                // Tambahkan aksi untuk menu jika diperlukan
+                Get.to(HomeView());
               },
             ),
             const Text(
-              'Pegawai',
+              'Pembeli',
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ],
@@ -48,7 +48,7 @@ class EmployeeView extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
               ),
               onPressed: () {
-                Get.to(() => EmployeeAddView());
+                Get.to(() => CustomerAddView());
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -114,7 +114,7 @@ class EmployeeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Nama  : ${data['nama']}",
+                                  "Nama             : ${data['nama']}",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -122,13 +122,28 @@ class EmployeeView extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  "Nomor  : ${data['nomor']}",
+                                  "Barang           : ${data['barang']}",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                     color: Colors.black,
                                   ),
                                 ),
+                                Text(
+                                  "Quantity         : ${data['quantity']}",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Text(
+                                  "Total Harga    : ${data['total']}",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
                               ],
                             ),
                           ),
@@ -161,7 +176,7 @@ class EmployeeView extends StatelessWidget {
                               ),
                               onPressed: () {
                                 Get.to(
-                                  EmployeeUpdateView(),
+                                  CustomerUpdateView(),
                                   arguments: id,
                                 );
                               },

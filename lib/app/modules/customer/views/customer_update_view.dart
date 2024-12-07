@@ -1,14 +1,12 @@
-// app/modules/product/views/product_update_view.dart
-import 'dart:ffi';
-
+// app/modules/customer/views/customer_update_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:project_mobile/app/modules/product/controllers/product_controller.dart';
+import 'package:project_mobile/app/modules/customer/controllers/customer_controller.dart';
 
-class ProductUpdateView extends GetView<ProductController> {
-  const ProductUpdateView({super.key});
+class CustomerUpdateView extends GetView<CustomerController> {
+  const CustomerUpdateView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +14,7 @@ class ProductUpdateView extends GetView<ProductController> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
-          'Update Data Produk',
+          'Update Data Pembeli',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -41,9 +39,10 @@ class ProductUpdateView extends GetView<ProductController> {
             if (snapshot.hasData) {
               // Extract data and update TextField controllers
               var data = snapshot.data!.data() as Map<String, dynamic>;
+              controller.cBarang.text = data['barang'];
               controller.cNama.text = data['nama'];
-              controller.cPrice.text = data['price'];
-              controller.cStok.text = data['stok'];
+              controller.cQuantity.text = data['quantity'];
+              controller.cTotal.text = data['total'];
 
               return Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -53,23 +52,31 @@ class ProductUpdateView extends GetView<ProductController> {
                     TextField(
                       controller: controller.cNama,
                       decoration: const InputDecoration(
-                        labelText: 'Nama Produk',
+                        labelText: 'Nama Pembeli',
                         border: OutlineInputBorder(),
                       ),
                     ),
                     const SizedBox(height: 16),
                     TextField(
-                      controller: controller.cPrice,
+                      controller: controller.cBarang,
                       decoration: const InputDecoration(
-                        labelText: 'Harga Produk',
+                        labelText: 'Nama Barang',
                         border: OutlineInputBorder(),
                       ),
                     ),
                     const SizedBox(height: 15),
                     TextField(
-                      controller: controller.cStok,
+                      controller: controller.cQuantity,
                       decoration: const InputDecoration(
-                        labelText: 'Stok',
+                        labelText: 'Quantity',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    TextField(
+                      controller: controller.cTotal,
+                      decoration: const InputDecoration(
+                        labelText: 'total harga',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -89,8 +96,9 @@ class ProductUpdateView extends GetView<ProductController> {
                           onPressed: () => controller.Update(
                             // Pass the ID or reference for update
                             controller.cNama.text,
-                            controller.cPrice.text,
-                            controller.cStok.text,
+                            controller.cBarang.text,
+                            controller.cQuantity.text,
+                            controller.cTotal.text,
                             Get.arguments,
                           ),
                           child: Row(

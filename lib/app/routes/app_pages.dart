@@ -1,5 +1,8 @@
+// app/routes/app_pages.dart
 import 'package:get/get.dart';
 
+import '../modules/customer/bindings/customer_binding.dart';
+import '../modules/customer/views/customer_view.dart';
 import '../modules/employee/bindings/employee_binding.dart';
 import '../modules/employee/views/employee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -61,8 +64,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EMPLOYEE,
-      page: () =>  EmployeeView(),
+      page: () => EmployeeView(),
       binding: EmployeeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMER,
+      page: () => CustomerView(),
+      binding: CustomerBinding(),
     ),
   ];
 }

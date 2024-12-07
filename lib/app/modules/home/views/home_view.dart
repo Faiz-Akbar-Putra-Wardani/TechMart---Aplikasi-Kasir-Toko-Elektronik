@@ -1,7 +1,12 @@
+// app/modules/home/views/home_view.dart
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_mobile/app/controllers/auth_controller.dart';
+import 'package:project_mobile/app/modules/employee/views/employee_add_view.dart';
+import 'package:project_mobile/app/modules/employee/views/employee_view.dart';
+import 'package:project_mobile/app/modules/product/views/product_add_view.dart';
+import 'package:project_mobile/app/modules/product/views/product_view.dart';
 import 'package:project_mobile/app/routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
@@ -13,20 +18,38 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-class AdminTechMartPage extends StatelessWidget {
+class AdminTechMartPage extends StatefulWidget {
+  @override
+  State<AdminTechMartPage> createState() => _AdminTechMartPageState();
+}
+
+class _AdminTechMartPageState extends State<AdminTechMartPage> {
+  get cAuth => Get.find<AuthController>();
+  int _index = 0;
+  List<Map> _fragment = [
+    {
+      'title': 'Data Pegawai',
+    },
+    {
+      'title': 'Data Produk',
+    },
+    {
+      'title': 'Data Pembeli',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer(),
       appBar: AppBar(
-        title: const Text('Admin TechMart'),
+        title: const Text('TechMart'),
         backgroundColor: Colors.blue,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/user_icon.png'), // Ganti dengan ikon pengguna
-            ),
-          ),
+          if (_fragment[_index].containsKey('add'))
+            IconButton(
+              onPressed: () => Get.to(_fragment[_index]['add']()),
+              icon: Icon(Icons.add_circle_outline),
+            )
         ],
       ),
       body: SingleChildScrollView(
@@ -50,14 +73,12 @@ class AdminTechMartPage extends StatelessWidget {
             // Logo
             Center(
               child: Image.asset(
-                'assets/images/LOGO.png', // Tambahkan logo di folder assets
-                height: 100,
-                width: 300,
+                'assets/images/GH.png', // Tambahkan logo di folder assets
+                height: 300,
+                width: 400,
               ),
             ),
-
-            const SizedBox(height: 20),
-
+            //  const SizedBox(height: 5),
             // Button "Data Admin"
             Center(
               child: ElevatedButton(
@@ -68,7 +89,7 @@ class AdminTechMartPage extends StatelessWidget {
                   backgroundColor: Colors.yellow,
                 ),
                 child: const Text(
-                  'Data Admin',
+                  'Aplikasi Kasir',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
@@ -99,7 +120,7 @@ class AdminTechMartPage extends StatelessWidget {
                     icon: Icons.person,
                     label: 'Data Pembeli',
                     onTap: () {
-                      // Navigasi ke Data Pembeli
+                      Get.offAllNamed(Routes.CUSTOMER);
                     },
                   ),
                   // Data Pegawai
@@ -127,25 +148,107 @@ class AdminTechMartPage extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem({
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 4.0,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 50, color: Colors.blue),
-            const SizedBox(height: 10),
-            Text(label, style: const TextStyle(fontSize: 16)),
-          ],
-        ),
+  Widget drawer() {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.account_circle,
+                  size: 80,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Faiz Akbar",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  'Admin',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Get.offAllNamed(Routes.EMPLOYEE);
+              Get.back();
+            },
+            leading: Icon(Icons.people),
+            title: Text('Data Pegawai'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.blue,
+            textColor: Colors.blue,
+          ),
+          ListTile(
+            onTap: () {
+              Get.offAllNamed(Routes.PRODUCT);
+              Get.back();
+            },
+            leading: Icon(Icons.people),
+            title: Text('Data Produk'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.blue,
+            textColor: Colors.blue,
+          ),
+          ListTile(
+            onTap: () {
+              setState(() => _index = 3);
+              Get.back();
+            },
+            leading: Icon(Icons.people),
+            title: Text('Data Pembeli'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.blue,
+            textColor: Colors.blue,
+          ),
+          ListTile(
+            onTap: () {
+              Get.back();
+              cAuth.logout();
+            },
+            leading: Icon(Icons.logout),
+            title: Text('Logout'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.blue,
+            textColor: Colors.blue,
+          ),
+        ],
       ),
     );
   }
 }
 
+Widget _buildMenuItem({
+  required IconData icon,
+  required String label,
+  required VoidCallback onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Card(
+      elevation: 4.0,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 50, color: Colors.blue),
+          const SizedBox(height: 10),
+          Text(label, style: const TextStyle(fontSize: 16)),
+        ],
+      ),
+    ),
+  );
+}

@@ -1,9 +1,11 @@
+// app/modules/product/views/product_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_mobile/app/modules/product/views/product_add_view.dart';
 import 'package:project_mobile/app/modules/product/views/product_update_view.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
 
 import '../controllers/product_controller.dart';
 
@@ -16,12 +18,13 @@ class ProductView extends GetView<ProductController> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,  // Agar icon dan teks berada di sisi yang berlawanan
+          mainAxisAlignment: MainAxisAlignment
+              .spaceBetween, // Agar icon dan teks berada di sisi yang berlawanan
           children: [
             IconButton(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
               onPressed: () {
-                // Tambahkan aksi untuk menu jika diperlukan
+                Get.to(HomeView());
               },
             ),
             const Text(
@@ -41,9 +44,8 @@ class ProductView extends GetView<ProductController> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 12,
-                    horizontal: 15
-                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
               ),
               onPressed: () {
                 Get.to(() => ProductAddView());
@@ -51,13 +53,10 @@ class ProductView extends GetView<ProductController> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: const [
-
                   SizedBox(width: 9),
                   Text(
                     "Tambah Data +",
-                    style: TextStyle(fontSize: 16,
-                        color: Colors.white),
-
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               ),
@@ -141,7 +140,6 @@ class ProductView extends GetView<ProductController> {
                               ],
                             ),
                           ),
-
                           const SizedBox(width: 16),
                           Container(
                             decoration: BoxDecoration(
@@ -149,10 +147,12 @@ class ProductView extends GetView<ProductController> {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3), // Warna bayangan
+                                  color: Colors.grey
+                                      .withOpacity(0.3), // Warna bayangan
                                   spreadRadius: 2, // Luas penyebaran bayangan
                                   blurRadius: 4, // Tingkat blur bayangan
-                                  offset: Offset(2, 2), // Posisi bayangan (x, y)
+                                  offset:
+                                      Offset(2, 2), // Posisi bayangan (x, y)
                                 ),
                               ],
                             ),
@@ -163,14 +163,15 @@ class ProductView extends GetView<ProductController> {
                                   vertical: 8,
                                 ),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8), // Sama dengan radius pada Container
+                                  borderRadius: BorderRadius.circular(
+                                      8), // Sama dengan radius pada Container
                                 ),
                               ),
                               onPressed: () {
-                                 Get.to(
-                                     ProductUpdateView(),
-                                    arguments: id,
-                                 );
+                                Get.to(
+                                  ProductUpdateView(),
+                                  arguments: id,
+                                );
                               },
                               child: const Text(
                                 "Edit",
@@ -182,17 +183,18 @@ class ProductView extends GetView<ProductController> {
                             ),
                           ),
                           const SizedBox(width: 8),
-
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.red, // Warna latar tombol
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.redAccent.withOpacity(0.5), // Warna bayangan (sedikit lebih terang)
+                                  color: Colors.redAccent.withOpacity(
+                                      0.5), // Warna bayangan (sedikit lebih terang)
                                   spreadRadius: 2, // Luas penyebaran bayangan
                                   blurRadius: 4, // Tingkat blur bayangan
-                                  offset: Offset(2, 2), // Posisi bayangan (x, y)
+                                  offset:
+                                      Offset(2, 2), // Posisi bayangan (x, y)
                                 ),
                               ],
                             ),
@@ -203,9 +205,11 @@ class ProductView extends GetView<ProductController> {
                                   vertical: 8,
                                 ),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8), // Sama dengan radius pada Container
+                                  borderRadius: BorderRadius.circular(
+                                      8), // Sama dengan radius pada Container
                                 ),
-                                backgroundColor: Colors.red.withOpacity(0), // Transparan karena diatur di Container
+                                backgroundColor: Colors.red.withOpacity(
+                                    0), // Transparan karena diatur di Container
                               ),
                               onPressed: () {
                                 controller.delete(id);
@@ -214,13 +218,13 @@ class ProductView extends GetView<ProductController> {
                                 "Hapus",
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Colors.white, // Ubah warna teks menjadi putih untuk kontras
+                                  color: Colors
+                                      .white, // Ubah warna teks menjadi putih untuk kontras
                                 ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 8),
-
                         ],
                       ),
                     );
