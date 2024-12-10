@@ -65,12 +65,12 @@ class LoginView extends GetView<LoginController> {
                   cAuth.login(controller.cEmail.text, controller.cPass.text);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow,
+                  backgroundColor: Colors.blueAccent,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 80,
                     vertical: 15,
                   ),
-                  textStyle: const TextStyle(fontSize: 18),
+                  textStyle: const TextStyle(fontSize: 17),
                 ),
                 child: const Text('Login'),
               ),
