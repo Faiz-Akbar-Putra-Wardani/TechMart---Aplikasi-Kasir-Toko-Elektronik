@@ -89,7 +89,7 @@ class _AdminTechMartPageState extends State<AdminTechMartPage> {
                   backgroundColor: Colors.yellow,
                 ),
                 child: const Text(
-                  'Aplikasi Kasir',
+                  'Aplikasi Kasir Toko',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
