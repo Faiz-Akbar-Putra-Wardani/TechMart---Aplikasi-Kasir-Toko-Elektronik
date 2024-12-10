@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class ProductController extends GetxController {
       });
       Get.defaultDialog(
           title: "Berhasil",
-          middleText: "Berhasil menyimpan data mahasiswa",
+          middleText: "Berhasil menyimpan data Produk",
           onConfirm: () {
             cNama.clear();
             cPrice.clear();
@@ -49,7 +49,7 @@ class ProductController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan Mahasiswa.",
+        middleText: "Gagal Menambahkan Produk.",
       );
     }
   }
@@ -86,7 +86,7 @@ class ProductController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan Mahasiswa.",
+        middleText: "Gagal Menambahkan Produk.",
       );
     }
   }
