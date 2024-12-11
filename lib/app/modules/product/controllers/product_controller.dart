@@ -97,13 +97,13 @@ class ProductController extends GetxController {
     try {
       Get.defaultDialog(
         title: "Info",
-        middleText: "Apakah anda yakin menghapus produk ini ?",
+        middleText: "Apakah anda yakin untuk menghapus produk ini ?",
         onConfirm: () {
           docRef.delete();
           Get.back();
           Get.defaultDialog(
             title: "Sukses",
-            middleText: "Berhasil menghapus produk",
+            middleText: "Berhasil menghapus produk!",
           );
         },
         textConfirm: "Ya",
