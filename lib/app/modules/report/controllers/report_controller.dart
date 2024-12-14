@@ -9,6 +9,7 @@ class ReportController extends GetxController {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  // ignore: non_constant_identifier_names
   Future<QuerySnapshot<Object?>> GetData() async {
     CollectionReference laporan = firestore.collection('laporan');
 
@@ -18,6 +19,34 @@ class ReportController extends GetxController {
   Stream<QuerySnapshot<Object?>> streamData() {
     CollectionReference laporan = firestore.collection('laporan');
     return laporan.snapshots();
+  }
+
+  void add(String bulan, String penghasilan) async {
+    CollectionReference pegawai = firestore.collection("pegawai");
+
+    try {
+      await pegawai.add({
+        "bulan": bulan,
+        "penghasilan": penghasilan,
+      });
+      Get.defaultDialog(
+          title: "Berhasil",
+          middleText: "Berhasil menyimpan data mahasiswa",
+          onConfirm: () {
+            cBulan.clear();
+            cPenghasilan.clear();
+            Get.back();
+            Get.back();
+            textConfirm:
+            "OK";
+          });
+    } catch (e) {
+      print(e);
+      Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: "Gagal Menambahkan Mahasiswa.",
+      );
+    }
   }
 
   @override
