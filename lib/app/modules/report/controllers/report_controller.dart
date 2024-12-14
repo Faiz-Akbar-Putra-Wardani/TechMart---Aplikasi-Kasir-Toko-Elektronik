@@ -22,7 +22,7 @@ class ReportController extends GetxController {
   }
 
   void add(String bulan, String penghasilan) async {
-    CollectionReference pegawai = firestore.collection("pegawai");
+    CollectionReference pegawai = firestore.collection("laporan");
 
     try {
       await pegawai.add({
@@ -31,7 +31,7 @@ class ReportController extends GetxController {
       });
       Get.defaultDialog(
           title: "Berhasil",
-          middleText: "Berhasil menyimpan data mahasiswa",
+          middleText: "Berhasil menyimpan data laporan",
           onConfirm: () {
             cBulan.clear();
             cPenghasilan.clear();
@@ -44,7 +44,7 @@ class ReportController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan Mahasiswa.",
+        middleText: "Gagal Menambahkan laporan.",
       );
     }
   }
