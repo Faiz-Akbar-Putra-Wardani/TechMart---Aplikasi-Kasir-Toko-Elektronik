@@ -49,6 +49,41 @@ class ReportController extends GetxController {
     }
   }
 
+  Future<DocumentSnapshot<Object?>> getData(String id) async {
+    DocumentReference docRef = firestore.collection("laporan").doc(id);
+
+    return docRef.get();
+  }
+
+  void Update(String bulan, String penghasilan, String id) async {
+    DocumentReference laporanById = firestore.collection("laporan").doc(id);
+
+    try {
+      await laporanById.update({
+        "bulan": bulan,
+        "penghasilan": penghasilan,
+      });
+
+      Get.defaultDialog(
+        title: "Berhasil",
+        middleText: "Berhasil mengubah data Laporan.",
+        onConfirm: () {
+          cBulan.clear();
+          cPenghasilan.clear();
+          Get.back();
+          Get.back();
+        },
+        textConfirm: "OK",
+      );
+    } catch (e) {
+      print(e);
+      Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: "Gagal Menambahkan Laporan.",
+      );
+    }
+  }
+
   @override
   void onInit() {
     // TODO: implement onInit
