@@ -5,7 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
 import 'package:project_mobile/app/modules/product/controllers/product_controller.dart';
+import 'package:project_mobile/app/modules/product/views/product_view.dart';
 
 class ProductUpdateView extends GetView<ProductController> {
   const ProductUpdateView({super.key});
@@ -21,9 +23,9 @@ class ProductUpdateView extends GetView<ProductController> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),

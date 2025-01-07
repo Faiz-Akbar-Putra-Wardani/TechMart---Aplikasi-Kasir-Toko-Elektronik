@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_mobile/app/modules/customer/controllers/customer_controller.dart';
+import 'package:project_mobile/app/modules/customer/views/customer_view.dart';
 
 class CustomerUpdateView extends GetView<CustomerController> {
   const CustomerUpdateView({super.key});
@@ -19,9 +20,9 @@ class CustomerUpdateView extends GetView<CustomerController> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),

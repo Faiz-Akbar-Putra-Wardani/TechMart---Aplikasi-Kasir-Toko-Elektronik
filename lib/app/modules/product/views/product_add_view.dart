@@ -1,7 +1,10 @@
+// app/modules/product/views/product_add_view.dart
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
 import 'package:project_mobile/app/modules/product/controllers/product_controller.dart';
+import 'package:project_mobile/app/modules/product/views/product_view.dart';
 
 class ProductAddView extends GetView<ProductController> {
   const ProductAddView({super.key});
@@ -11,14 +14,15 @@ class ProductAddView extends GetView<ProductController> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text('Tambah Data Produk',
+        title: const Text(
+          'Tambah Data Produk',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),
@@ -60,13 +64,13 @@ class ProductAddView extends GetView<ProductController> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 15),
                   ),
                   onPressed: () => controller.add(
                     controller.cNama.text,
                     controller.cPrice.text,
                     controller.cStok.text,
-
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -84,7 +88,6 @@ class ProductAddView extends GetView<ProductController> {
                 ),
               ),
             )
-
           ],
         ),
       ),

@@ -1,7 +1,11 @@
+// app/modules/report/views/report_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
+import 'package:project_mobile/app/modules/report/views/report_add_view.dart';
+import 'package:project_mobile/app/modules/report/views/report_update_view.dart';
 
 import '../controllers/report_controller.dart';
 
@@ -18,9 +22,9 @@ class ReportView extends GetView<ReportController> {
               .spaceBetween, // Agar icon dan teks berada di sisi yang berlawanan
           children: [
             IconButton(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                // Tambahkan aksi untuk menu jika diperlukan
+                Get.to(HomeView());
               },
             ),
             const Text(
@@ -44,7 +48,7 @@ class ReportView extends GetView<ReportController> {
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
               ),
               onPressed: () {
-                // Get.to(() => EmployeeAddView());
+                Get.to(() => ReportAddView());
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -110,7 +114,7 @@ class ReportView extends GetView<ReportController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Bulan  : ${data['Bulan']}",
+                                  "Bulan  : ${data['bulan']}",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -118,7 +122,7 @@ class ReportView extends GetView<ReportController> {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  "Penghasilan  : ${data['Penghasilan']}",
+                                  "Penghasilan  : ${data['penghasilan']}",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -156,10 +160,10 @@ class ReportView extends GetView<ReportController> {
                                 ),
                               ),
                               onPressed: () {
-                                // Get.to(
-                                //   EmployeeUpdateView(),
-                                //   arguments: id,
-                                // );
+                                Get.to(
+                                  ReportUpdateView(),
+                                  arguments: id,
+                                );
                               },
                               child: const Text(
                                 "Edit",
@@ -200,7 +204,7 @@ class ReportView extends GetView<ReportController> {
                                     0), // Transparan karena diatur di Container
                               ),
                               onPressed: () {
-                                // controller.delete(id);
+                                controller.delete(id);
                               },
                               child: const Text(
                                 "Hapus",

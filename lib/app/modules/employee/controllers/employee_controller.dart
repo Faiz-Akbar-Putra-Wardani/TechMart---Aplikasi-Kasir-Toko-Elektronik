@@ -67,7 +67,7 @@ class EmployeeController extends GetxController {
 
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Berhasil mengubah data Mahasiswa.",
+        middleText: "Berhasil mengubah data Pegawai.",
         onConfirm: () {
           cNama.clear();
           cNomor.clear();
@@ -80,7 +80,7 @@ class EmployeeController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan Mahasiswa.",
+        middleText: "Gagal Menambahkan Pegawai.",
       );
     }
   }

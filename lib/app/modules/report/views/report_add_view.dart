@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_mobile/app/modules/report/controllers/report_controller.dart';
+import 'package:project_mobile/app/modules/report/views/report_view.dart';
 
 class ReportAddView extends GetView<ReportController> {
   const ReportAddView({super.key});
@@ -18,9 +19,9 @@ class ReportAddView extends GetView<ReportController> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),

@@ -1,6 +1,8 @@
+// app/modules/employee/views/employee_update_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/employee/views/employee_view.dart';
 
 import '../controllers/employee_controller.dart';
 
@@ -19,14 +21,15 @@ class EmployeeUpdateView extends GetView<EmployeeController> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),
       body: FutureBuilder<DocumentSnapshot<Object?>>(
-        future: controller.getData(Get.arguments), // Fetch data based on arguments
+        future:
+            controller.getData(Get.arguments), // Fetch data based on arguments
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -75,7 +78,7 @@ class EmployeeUpdateView extends GetView<EmployeeController> {
                                 vertical: 12, horizontal: 15),
                           ),
                           onPressed: () => controller.Update(
-                             // Pass the ID or reference for update
+                            // Pass the ID or reference for update
                             controller.cNama.text,
                             controller.cNomor.text,
                             Get.arguments,

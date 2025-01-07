@@ -1,7 +1,8 @@
+// app/modules/employee/views/employee_add_view.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_mobile/app/modules/employee/controllers/employee_controller.dart';
-
+import 'package:project_mobile/app/modules/employee/views/employee_view.dart';
 
 class EmployeeAddView extends GetView<EmployeeController> {
   const EmployeeAddView({super.key});
@@ -12,14 +13,15 @@ class EmployeeAddView extends GetView<EmployeeController> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text('Tambah Data Pegawai',
-        style: TextStyle(color: Colors.white),
+        title: const Text(
+          'Tambah Data Pegawai',
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),
@@ -53,7 +55,8 @@ class EmployeeAddView extends GetView<EmployeeController> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 15),
                   ),
                   onPressed: () => controller.add(
                     controller.cNama.text,
@@ -75,7 +78,6 @@ class EmployeeAddView extends GetView<EmployeeController> {
                 ),
               ),
             )
-
           ],
         ),
       ),

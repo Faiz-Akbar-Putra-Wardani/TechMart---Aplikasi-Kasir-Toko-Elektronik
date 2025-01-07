@@ -136,7 +136,7 @@ class _AdminTechMartPageState extends State<AdminTechMartPage> {
                     icon: Icons.report,
                     label: 'Data Laporan',
                     onTap: () {
-                      // Navigasi ke Data Laporan
+                      Get.offAllNamed(Routes.REPORT);
                     },
                   ),
                 ],

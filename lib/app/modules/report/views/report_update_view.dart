@@ -1,14 +1,16 @@
+// app/modules/report/views/report_update_view.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:project_mobile/app/modules/report/controllers/report_controller.dart';
+import 'package:project_mobile/app/modules/report/views/report_view.dart';
 
 class ReportUpdateView extends GetView<ReportController> {
   const ReportUpdateView({super.key});
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
@@ -18,14 +20,15 @@ class ReportUpdateView extends GetView<ReportController> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
-            // Handle menu action if needed
+            Get.back();
           },
         ),
       ),
       body: FutureBuilder<DocumentSnapshot<Object?>>(
-        future: controller.getData(Get.arguments), // Fetch data based on arguments
+        future:
+            controller.getData(Get.arguments), // Fetch data based on arguments
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -74,7 +77,7 @@ class ReportUpdateView extends GetView<ReportController> {
                                 vertical: 12, horizontal: 15),
                           ),
                           onPressed: () => controller.Update(
-                             // Pass the ID or reference for update
+                            // Pass the ID or reference for update
                             controller.cBulan.text,
                             controller.cPenghasilan.text,
                             Get.arguments,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_mobile/app/modules/employee/views/employee_add_view.dart';
 import 'package:project_mobile/app/modules/employee/views/employee_update_view.dart';
+import 'package:project_mobile/app/modules/home/views/home_view.dart';
 import 'package:project_mobile/app/routes/app_pages.dart';
 
 import '../controllers/employee_controller.dart';
@@ -22,9 +23,9 @@ class EmployeeView extends StatelessWidget {
               .spaceBetween, // Agar icon dan teks berada di sisi yang berlawanan
           children: [
             IconButton(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
               onPressed: () {
-                // Tambahkan aksi untuk menu jika diperlukan
+                Get.to(HomeView());
               },
             ),
             const Text(

@@ -1,5 +1,7 @@
 // app/routes/app_pages.dart
 import 'package:get/get.dart';
+import 'package:project_mobile/app/modules/report/bindings/report_binding.dart';
+import 'package:project_mobile/app/modules/report/views/report_view.dart';
 
 import '../modules/customer/bindings/customer_binding.dart';
 import '../modules/customer/views/customer_view.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.CUSTOMER,
       page: () => CustomerView(),
       binding: CustomerBinding(),
+    ),
+    GetPage(
+      name: _Paths.REPORT,
+      page: () => ReportView(),
+      binding: ReportBinding(),
     ),
   ];
 }
