@@ -206,7 +206,7 @@ class _AdminTechMartPageState extends State<AdminTechMartPage> {
           ),
           ListTile(
             onTap: () {
-              setState(() => _index = 3);
+              Get.offAllNamed(Routes.CUSTOMER);
               Get.back();
             },
             leading: Icon(Icons.people),
