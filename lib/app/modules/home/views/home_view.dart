@@ -217,6 +217,17 @@ class _AdminTechMartPageState extends State<AdminTechMartPage> {
           ),
           ListTile(
             onTap: () {
+              Get.offAllNamed(Routes.REPORT);
+              Get.back();
+            },
+            leading: Icon(Icons.people),
+            title: Text('Data Laporan'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.blue,
+            textColor: Colors.blue,
+          ),
+          ListTile(
+            onTap: () {
               Get.back();
               cAuth.logout();
             },
