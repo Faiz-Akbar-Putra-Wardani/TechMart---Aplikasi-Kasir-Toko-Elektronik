@@ -18,8 +18,10 @@ class CustomerView extends GetView<CustomerController> {
         backgroundColor: Colors.blue,
         iconTheme: const IconThemeData(color: Colors.white),
         title: Row(
+          crossAxisAlignment:
+              CrossAxisAlignment.center, // Pastikan elemen sejajar vertikal
           mainAxisAlignment: MainAxisAlignment
-              .spaceBetween, // Agar icon dan teks berada di sisi yang berlawanan
+              .spaceBetween, // Agar ikon dan teks diatur jaraknya
           children: [
             IconButton(
               icon: const Icon(Icons.arrow_back_ios_new_outlined),
@@ -31,6 +33,9 @@ class CustomerView extends GetView<CustomerController> {
               'Pembeli',
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
+            const SizedBox(
+                width:
+                    48), // Menyediakan ruang kosong agar teks tetap di tengah
           ],
         ),
       ),
